@@ -19,8 +19,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private TextView faceVersion;//sdk版本
     private String appVersion = "";//app版本
 
-    private TextView faceDemo;//演示
+//    private TextView faceDemo;//演示
     private TextView faceExamples;//详细调用例子
+    private TextView register_demo;//额外抽取出来的注册演示
     private FaceSet faceSet;
 
     @SuppressLint("CheckResult")
@@ -50,8 +51,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initView() {
-        faceDemo = findViewById(R.id.face_demo);
+//        faceDemo = findViewById(R.id.face_demo);
         faceExamples = findViewById(R.id.face_examples);
+        register_demo = findViewById(R.id.register_demo);
         faceVersion = findViewById(R.id.face_version);
 
 
@@ -64,20 +66,25 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initEvent() {
-        faceDemo.setOnClickListener(this);
+//        faceDemo.setOnClickListener(this);
         faceExamples.setOnClickListener(this);
+        register_demo.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.face_demo://
-                Intent faceDemoIntent = new Intent(MainActivity.this, FaceDemoActivity.class);
-                startActivity(faceDemoIntent);
-                break;
+//            case R.id.face_demo://
+//                Intent faceDemoIntent = new Intent(MainActivity.this, FaceDemoActivity.class);
+//                startActivity(faceDemoIntent);
+//                break;
             case R.id.face_examples://详细例子
                 Intent faceExamplesIntent = new Intent(MainActivity.this, FaceExamplesActivity.class);
                 startActivity(faceExamplesIntent);
+                break;
+            case R.id.register_demo://详细例子
+                Intent registerIntent = new Intent(MainActivity.this, FaceRegistActivity.class);
+                startActivity(registerIntent);
                 break;
             default:
                 break;

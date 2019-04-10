@@ -35,9 +35,8 @@ public class FaceRegistActivity extends BaseActivity implements View.OnClickList
     private UserListAdapter adapter = null;
     private ArrayList<User> userList = null;
     private ImageButton registCam;
-    private ImageButton registPic;
-    private ImageButton registBatch;
-    private ImageButton deleteAll;
+    private ImageButton faceRec;
+
 
     private FaceSet faceSet;
 
@@ -52,13 +51,9 @@ public class FaceRegistActivity extends BaseActivity implements View.OnClickList
         rcv_head.setAdapter(adapter);
         adapter.setOnItemClickListener(this);
         registCam = findViewById(R.id.regist_cam);
-        registPic = findViewById(R.id.regist_pic);
-        registBatch = findViewById(R.id.regist_batch);
-        registBatch.setOnClickListener(this);
-        registPic.setOnClickListener(this);
         registCam.setOnClickListener(this);
-        deleteAll = findViewById(R.id.all_delete);
-        deleteAll.setOnClickListener(this);
+        faceRec = findViewById(R.id.face_rec);
+        faceRec.setOnClickListener(this);
 
 
     }
@@ -106,57 +101,59 @@ public class FaceRegistActivity extends BaseActivity implements View.OnClickList
                 Intent camIntent = new Intent(FaceRegistActivity.this, RegistFromCamAcitvity.class);
                 startActivityForResult(camIntent, 1000);
                 break;
-            case R.id.regist_pic:
-                Intent picIntent = new Intent(FaceRegistActivity.this, RegistFromPicActivity.class);
-                startActivityForResult(picIntent, 1000);
+            case R.id.face_rec:
+                Intent faceDemoIntent = new Intent(FaceRegistActivity.this, FaceDemoActivity.class);
+                startActivity(faceDemoIntent);
+//                Intent picIntent = new Intent(FaceRegistActivity.this, RegistFromPicActivity.class);
+//                startActivityForResult(picIntent, 1000);
                 break;
-            case R.id.regist_batch:
-                Intent batchIntent = new Intent(FaceRegistActivity.this, RegistFromBatchPicActivity.class);
-                startActivityForResult(batchIntent, 1000);
-                break;
-            case R.id.all_delete:
-                if (faceSet.getPersonCount() == 0) {
-                    showShortToast(FaceRegistActivity.this, "当前无录入人脸");
-                    return;
-                }
-                new TDialog.Builder(getSupportFragmentManager())
-                        .setLayoutRes(R.layout.dialog_regist)
-                        .setHeight(600)
-                        .setGravity(Gravity.CENTER)
-                        .setScreenWidthAspect(this, 0.9f)
-                        .addOnClickListener(R.id.regist_cancle, R.id.regist_confirm)
-                        .setCancelableOutside(true)
-                        .setOnBindViewListener(new OnBindViewListener() {
-                            @Override
-                            public void bindView(BindViewHolder viewHolder) {
-                                TextView txShow = viewHolder.getView(R.id.regist_tx_show);
-                                txShow.setText(String.format("是否确定删除所有已注册用户？"));
-                            }
-                        })
-                        .setOnViewClickListener(new OnViewClickListener() {
-                            @Override
-                            public void onViewClick(BindViewHolder viewHolder, View view, TDialog tDialog) {
-                                if (view.getId() == R.id.regist_confirm) {
-                                    if (faceSet.removeAllUser()) {
-                                        Log.e("Rs", "全部删除成功");
-                                        userList = UserDataUtil.updateDataSource();
-                                        adapter.updateData(userList);
-                                    }
-                                    tDialog.dismiss();
-                                }
-                            }
-                        })
-                        .create()
-                        .show();
-                break;
+//            case R.id.regist_batch:
+//                Intent batchIntent = new Intent(FaceRegistActivity.this, RegistFromBatchPicActivity.class);
+//                startActivityForResult(batchIntent, 1000);
+//                break;
+//            case R.id.all_delete:
+//                if (faceSet.getPersonCount() == 0) {
+//                    showShortToast(FaceRegistActivity.this, "当前无录入人脸");
+//                    return;
+//                }
+//                new TDialog.Builder(getSupportFragmentManager())
+//                        .setLayoutRes(R.layout.dialog_regist)
+//                        .setHeight(600)
+//                        .setGravity(Gravity.CENTER)
+//                        .setScreenWidthAspect(this, 0.9f)
+//                        .addOnClickListener(R.id.regist_cancle, R.id.regist_confirm)
+//                        .setCancelableOutside(true)
+//                        .setOnBindViewListener(new OnBindViewListener() {
+//                            @Override
+//                            public void bindView(BindViewHolder viewHolder) {
+//                                TextView txShow = viewHolder.getView(R.id.regist_tx_show);
+//                                txShow.setText(String.format("是否确定删除所有已注册用户？"));
+//                            }
+//                        })
+//                        .setOnViewClickListener(new OnViewClickListener() {
+//                            @Override
+//                            public void onViewClick(BindViewHolder viewHolder, View view, TDialog tDialog) {
+//                                if (view.getId() == R.id.regist_confirm) {
+//                                    if (faceSet.removeAllUser()) {
+//                                        Log.e("Rs", "全部删除成功");
+//                                        userList = UserDataUtil.updateDataSource();
+//                                        adapter.updateData(userList);
+//                                    }
+//                                    tDialog.dismiss();
+//                                }
+//                            }
+//                        })
+//                        .create()
+//                        .show();
+//                break;
         }
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            Intent intent = new Intent(FaceRegistActivity.this, FaceDemoActivity.class);
-            startActivityForResult(intent, 1000);
+//            Intent intent = new Intent(FaceRegistActivity.this, FaceDemoActivity.class); //注：抽取注册模块，注销代码
+//            startActivityForResult(intent, 1000);
             finish();
             return true;
         }

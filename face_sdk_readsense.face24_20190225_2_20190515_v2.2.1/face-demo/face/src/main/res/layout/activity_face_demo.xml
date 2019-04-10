@@ -49,12 +49,14 @@
         android:layout_centerInParent="true"
         android:adjustViewBounds="true" />
 
-    <include
+    <!--<include
         layout="@layout/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:orientation="horizontal"></include>
+        android:layout_marginTop="0dp"
+        android:orientation="horizontal"></include>-->
 
 
     <ImageView

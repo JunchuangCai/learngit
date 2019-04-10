@@ -26,7 +26,7 @@
             android:src="@drawable/ic_face_cam_on"></ImageButton>
 
         <ImageButton
-            android:id="@+id/regist_pic"
+            android:id="@+id/face_rec"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
@@ -34,23 +34,6 @@
             android:scaleType="centerInside"
             android:src="@drawable/ic_face_pic_on"></ImageButton>
 
-        <ImageButton
-            android:id="@+id/regist_batch"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:background="#fff"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_face_pic_on"></ImageButton>
-
-        <ImageButton
-            android:id="@+id/all_delete"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:background="#fff"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_face_pic_on"></ImageButton>
 
         <!--<SearchView-->
         <!--android:id="@+id/search_bar"-->
@@ -79,14 +62,7 @@
             android:scaleType="centerInside"
             android:text="相机注册"></TextView>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#fff"
-            android:gravity="center"
-            android:scaleType="centerInside"
-            android:text="图片注册"></TextView>
+
 
         <TextView
             android:layout_width="0dp"
@@ -95,16 +71,7 @@
             android:background="#fff"
             android:gravity="center"
             android:scaleType="centerInside"
-            android:text="批量注册"></TextView>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#fff"
-            android:gravity="center"
-            android:scaleType="centerInside"
-            android:text="全部删除"></TextView>
+            android:text="人脸识别"></TextView>
 
 
     </LinearLayout>

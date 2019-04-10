@@ -18,7 +18,7 @@
         android:layout_centerInParent="true"
         android:orientation="vertical">
 
-        <TextView
+        <!--<TextView
             android:id="@+id/face_demo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
             android:paddingBottom="5dp"
             android:text="@string/face_demo"
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
+            android:textSize="20sp" />-->
 
         <TextView
             android:id="@+id/face_examples"
@@ -48,7 +48,23 @@
             android:paddingTop="5dp"
             android:paddingRight="50dp"
             android:paddingBottom="5dp"
-            android:text="@string/face_examples"
+            android:text="@string/face_example"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/register_demo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/selector_activity_main_textview"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:paddingLeft="50dp"
+            android:paddingTop="5dp"
+            android:paddingRight="50dp"
+            android:paddingBottom="5dp"
+            android:text="@string/register_demo"
             android:textColor="@android:color/white"
             android:textSize="20sp" />
     </LinearLayout>

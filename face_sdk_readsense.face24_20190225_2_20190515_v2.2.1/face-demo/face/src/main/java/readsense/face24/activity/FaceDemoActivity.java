@@ -62,18 +62,18 @@ public class FaceDemoActivity extends CameraActivity implements View.OnClickList
     private Map<Integer, User> userMap;
 
     private boolean openFaceTrack = false;//追踪
-    private boolean openFaceReco = false;//识别
+    private boolean openFaceReco = true;//识别
     private boolean openFaceLiveness = false; //红外活体
     private boolean openFaceRgbLiveness = false;  //可见光活体
     private boolean openFaceBinoculareLiveness = false; //双目活体（可见光+红外）
 
-    private ImageView btFaceTrack;//人脸追踪
+//    private ImageView btFaceTrack;//人脸追踪
     private ImageView btFaceReco;//人脸识别
-    private ImageView btFaceRegist;//人脸注册
-    private ImageView btRgbLiveness;//可见光活体
-    private ImageView btFaceLiveness;//红外活体
-    private ImageView btFaceBinoculareLiveness;//双目活体
-    private ImageView btFaceConfig;//配置
+//    private ImageView btFaceRegist;//人脸注册
+//    private ImageView btRgbLiveness;//可见光活体
+//    private ImageView btFaceLiveness;//红外活体
+//    private ImageView btFaceBinoculareLiveness;//双目活体
+//    private ImageView btFaceConfig;//配置
     private ImageView btSwitchCamera;//切换相机
 
     private FaceConfigFragment fragment; //配置fragment
@@ -174,95 +174,99 @@ public class FaceDemoActivity extends CameraActivity implements View.OnClickList
      */
     @Override
     protected void initView() {
-        btFaceLiveness = findViewById(R.id.face_liveness);
-        btFaceLiveness.setOnClickListener(this);
-        btRgbLiveness = findViewById(R.id.face_rgb_liveness);
-        btRgbLiveness.setOnClickListener(this);
-        btFaceBinoculareLiveness = findViewById(R.id.face_binocular_liveness);
-        btFaceBinoculareLiveness.setOnClickListener(this);
-        btFaceTrack = findViewById(R.id.face_track);
-        btFaceTrack.setOnClickListener(this);
-        btFaceReco = findViewById(R.id.face_reco);
-        btFaceReco.setOnClickListener(this);
-        btFaceRegist = findViewById(R.id.face_regist);
-        btFaceRegist.setOnClickListener(this);
-        btFaceConfig = findViewById(R.id.face_config);
-        btFaceConfig.setOnClickListener(this);
+//        btFaceLiveness = findViewById(R.id.face_liveness);
+//        btFaceLiveness.setOnClickListener(this);
+//        btRgbLiveness = findViewById(R.id.face_rgb_liveness);
+//        btRgbLiveness.setOnClickListener(this);
+//        btFaceBinoculareLiveness = findViewById(R.id.face_binocular_liveness);
+//        btFaceBinoculareLiveness.setOnClickListener(this);
+//        btFaceTrack = findViewById(R.id.face_track);
+//        btFaceTrack.setOnClickListener(this);
+//        btFaceReco = findViewById(R.id.face_reco);
+//        btFaceReco.setOnClickListener(this);
+//        btFaceRegist = findViewById(R.id.face_regist);
+//        btFaceRegist.setOnClickListener(this);
+//        btFaceConfig = findViewById(R.id.face_config);
+//        btFaceConfig.setOnClickListener(this);
         btSwitchCamera = findViewById(R.id.bt_switch_camera);
         btSwitchCamera.setOnClickListener(this);
+//        /**人脸识别开关*/
+//        btFaceReco.setImageResource(FACE_RECO[openFaceReco ? 0 : 1]);
+//        openFaceReco = openFaceReco == false ? true : false;
+        showShortToast(this, "人脸识别：" + openFaceReco);
         super.initView();
     }
 
 
     @Override
     public void onClick(View item) {
-        switch (item.getId()) {
-            case R.id.face_reco:
-                /**人脸识别开关*/
-                btFaceReco.setImageResource(FACE_RECO[openFaceReco ? 0 : 1]);
-                openFaceReco = openFaceReco == false ? true : false;
-                showShortToast(this, "人脸识别：" + openFaceReco);
-                return;
-            case R.id.face_binocular_liveness:
-                /**双目识别开关*/
-                btFaceBinoculareLiveness.setImageResource(FACK_BINOCULARE_LIVENESS[openFaceBinoculareLiveness ? 0 : 1]);
-                openFaceBinoculareLiveness = openFaceBinoculareLiveness == false ? true : false;
-                if (openFaceBinoculareLiveness)
-                    openIRCamera();
-                else
-                    closeIRCamera();
-                showShortToast(this, "双目活体识别：" + openFaceLiveness);
-                return;
-            case R.id.face_track:
-                /**人脸追踪开关*/
-                btFaceTrack.setImageResource(FACE_TRACK[openFaceTrack ? 0 : 1]);
-                openFaceTrack = openFaceTrack == false ? true : false;
-                showShortToast(this, "人脸追踪：" + openFaceTrack);
-                return;
-            case R.id.face_liveness:
-                /**红外活体*/
-                btFaceLiveness.setImageResource(FACK_LIVENESS[openFaceLiveness ? 0 : 1]);
-                openFaceLiveness = openFaceLiveness == false ? true : false;
-                showShortToast(this, "红外活体识别：" + openFaceLiveness);
-                return;
-            case R.id.face_rgb_liveness:
-                /**可见光活体*/
-                btRgbLiveness.setImageResource(FACK_RGB_LIVENESS[openFaceRgbLiveness ? 0 : 1]);
-                openFaceRgbLiveness = openFaceRgbLiveness == false ? true : false;
-                showShortToast(this, "可见光活体识别：" + openFaceRgbLiveness);
-                return;
-            case R.id.bt_switch_camera:
+//        switch (item.getId()) {
+//            case R.id.face_reco:
+//                /**人脸识别开关*/
+//                btFaceReco.setImageResource(FACE_RECO[openFaceReco ? 0 : 1]);
+//                openFaceReco = openFaceReco == false ? true : false;
+//                showShortToast(this, "人脸识别：" + openFaceReco);
+//                return;
+//            case R.id.face_binocular_liveness:
+//                /**双目识别开关*/
+//                btFaceBinoculareLiveness.setImageResource(FACK_BINOCULARE_LIVENESS[openFaceBinoculareLiveness ? 0 : 1]);
+//                openFaceBinoculareLiveness = openFaceBinoculareLiveness == false ? true : false;
+//                if (openFaceBinoculareLiveness)
+//                    openIRCamera();
+//                else
+//                    closeIRCamera();
+//                showShortToast(this, "双目活体识别：" + openFaceLiveness);
+//                return;
+//            case R.id.face_track:
+//                /**人脸追踪开关*/
+//                btFaceTrack.setImageResource(FACE_TRACK[openFaceTrack ? 0 : 1]);
+//                openFaceTrack = openFaceTrack == false ? true : false;
+//                showShortToast(this, "人脸追踪：" + openFaceTrack);
+//                return;
+//            case R.id.face_liveness:
+//                /**红外活体*/
+//                btFaceLiveness.setImageResource(FACK_LIVENESS[openFaceLiveness ? 0 : 1]);
+//                openFaceLiveness = openFaceLiveness == false ? true : false;
+//                showShortToast(this, "红外活体识别：" + openFaceLiveness);
+//                return;
+//            case R.id.face_rgb_liveness:
+//                /**可见光活体*/
+//                btRgbLiveness.setImageResource(FACK_RGB_LIVENESS[openFaceRgbLiveness ? 0 : 1]);
+//                openFaceRgbLiveness = openFaceRgbLiveness == false ? true : false;
+//                showShortToast(this, "可见光活体识别：" + openFaceRgbLiveness);
+//                return;
+//            case R.id.bt_switch_camera:
                 /**切换摄像头*/
                 swichCamera();
                 return;
-            case R.id.face_regist:
-                /**用户注册*/
-                new TListDialog.Builder(getSupportFragmentManager())
-                        .setScreenWidthAspect(this, 1f)
-                        .setGravity(Gravity.BOTTOM)
-                        .setAdapter(new TBaseAdapter<String>(R.layout.item_simple_text, Arrays.asList(registStr)) {
-                            @Override
-                            protected void onBind(BindViewHolder holder, int position, String s) {
-                                holder.setText(R.id.tv, s);
-                            }
-                        })
-                        .setOnAdapterItemClickListener(this)
-                        .create()
-                        .show();
-                return;
-            case R.id.face_config:
-                /**参数设置*/
-                if (fragment == null) {
-                    fragment = new FaceConfigFragment();
-                    fragment.setOnclickListener(this);
-                    FragmentTransaction ft2 = getFragmentManager().beginTransaction();
-                    ft2.replace(R.id.demo_fragment, fragment);
-                    ft2.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                    ft2.addToBackStack(null);
-                    ft2.commit();
-                }
-                return;
-        }
+//            case R.id.face_regist:
+//                /**用户注册*/
+//                new TListDialog.Builder(getSupportFragmentManager())
+//                        .setScreenWidthAspect(this, 1f)
+//                        .setGravity(Gravity.BOTTOM)
+//                        .setAdapter(new TBaseAdapter<String>(R.layout.item_simple_text, Arrays.asList(registStr)) {
+//                            @Override
+//                            protected void onBind(BindViewHolder holder, int position, String s) {
+//                                holder.setText(R.id.tv, s);
+//                            }
+//                        })
+//                        .setOnAdapterItemClickListener(this)
+//                        .create()
+//                        .show();
+//                return;
+//            case R.id.face_config:
+//                /**参数设置*/
+//                if (fragment == null) {
+//                    fragment = new FaceConfigFragment();
+//                    fragment.setOnclickListener(this);
+//                    FragmentTransaction ft2 = getFragmentManager().beginTransaction();
+//                    ft2.replace(R.id.demo_fragment, fragment);
+//                    ft2.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//                    ft2.addToBackStack(null);
+//                    ft2.commit();
+//                }
+//                return;
+//        }
     }
 
     /**

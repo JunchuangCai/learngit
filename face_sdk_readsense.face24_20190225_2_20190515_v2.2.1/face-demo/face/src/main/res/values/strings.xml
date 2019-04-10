@@ -13,5 +13,7 @@
     <string name="tips3">请请抬头20°</string>
     <string name="tips4">请低头20°</string>
     <string name="face_demo">demo演示</string>
-    <string name="face_examples">demo实例</string>
+    <string name="register_demo">demo注册</string>
+    <string name="face_example">demo实例</string>
+
 </resources>
